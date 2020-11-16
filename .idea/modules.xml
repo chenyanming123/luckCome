@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/data-dao/data-dao.iml" filepath="$PROJECT_DIR$/data-dao/data-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/data-entity/data-entity.iml" filepath="$PROJECT_DIR$/data-entity/data-entity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/data-service/data-service.iml" filepath="$PROJECT_DIR$/data-service/data-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/data-web/data-web.iml" filepath="$PROJECT_DIR$/data-web/data-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/luckCome.iml" filepath="$PROJECT_DIR$/luckCome.iml" />
+    </modules>
+  </component>
+</project>
