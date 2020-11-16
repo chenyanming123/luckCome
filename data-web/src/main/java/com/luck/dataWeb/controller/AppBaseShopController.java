@@ -18,7 +18,7 @@ public class AppBaseShopController {
     @Autowired
     private AppBaseShopService appBaseShopService;
 
-    @ApiOperation(value = "商铺信息列表", notes = "", authorizations = {@Authorization(value = "token")})
+    @ApiOperation(value = "商铺信息列表1", notes = "", authorizations = {@Authorization(value = "token")})
     @ApiResponses(value = {@ApiResponse(code = 200, message = "successful")})
     @RequestMapping(value = "/getShopList", method = RequestMethod.POST)
     public ResponseEntity<PageQuery<JSONObject>> getShopList(@RequestParam(required = true) Integer pageNum,

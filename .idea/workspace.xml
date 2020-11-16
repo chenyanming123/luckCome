@@ -19,7 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d5d0cd1e-7f7f-4b37-9bc8-714adbe8df53" name="Default Changelist" comment="" />
+    <list default="true" id="d5d0cd1e-7f7f-4b37-9bc8-714adbe8df53" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/data-web/src/main/java/com/luck/dataWeb/controller/AppBaseShopController.java" beforeDir="false" afterPath="$PROJECT_DIR$/data-web/src/main/java/com/luck/dataWeb/controller/AppBaseShopController.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -93,6 +95,7 @@
       <workItem from="1604926898191" duration="157000" />
       <workItem from="1605437373758" duration="6170000" />
       <workItem from="1605491699134" duration="1945000" />
+      <workItem from="1605506502568" duration="38000" />
     </task>
     <task id="LOCAL-00001" summary="商铺">
       <created>1605447898786</created>
