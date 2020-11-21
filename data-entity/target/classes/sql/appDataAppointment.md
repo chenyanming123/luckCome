@@ -6,6 +6,8 @@ queryMylove
         @pageTag(){
             p1.id,
             p1.other_id,
+            p1.appointment_time,
+            p1.place_id,
             p2.nick_name,
             p2.birth_year,
             ROUND( DATEDIFF( CURDATE( ), p2.birth_year ) / 365.2422 ) AS age,
@@ -48,6 +50,8 @@ queryLoveme
         @pageTag(){
             p1.id,
             p1.user_id,
+            p1.appointment_time,
+            p1.place_id,
             p2.nick_name,
             p2.birth_year,
             ROUND( DATEDIFF( CURDATE( ), p2.birth_year ) / 365.2422 ) AS age,
@@ -85,6 +89,8 @@ queryLoveEachOther
         @pageTag(){
             p1.id,
             p1.newUserId,
+            p1.appointment_time,
+            p1.place_id,
             p2.nick_name,
             p2.birth_year,
             ROUND( DATEDIFF( CURDATE( ), p2.birth_year ) / 365.2422 ) AS age,
