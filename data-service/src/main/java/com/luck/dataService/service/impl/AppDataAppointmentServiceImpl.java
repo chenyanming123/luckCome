@@ -38,6 +38,20 @@ public class AppDataAppointmentServiceImpl implements AppDataAppointmentService 
             return MassageUtils.getMsg("500","添加失败");
         }
     }
+
+    @Override
+    public Map updateAppDataAppointment(Integer id, String appointmentTime, String placeId) {
+
+        AppDataAppointment appDataAppointment = appDataAppointmentDao.unique(id);
+        appDataAppointment.setAppointmentTime(appointmentTime);
+        appDataAppointment.setPlaceId(placeId);
+        if(appDataAppointment.getStatus() == 2 || appDataAppointment.getDataStatus() == 0){
+            return MassageUtils.getMsg("500","操作失败，对方已取消约会！");
+        }
+        appDataAppointmentDao.updateById(appDataAppointment);
+        return MassageUtils.getMsg("200","操作成功！");
+    }
+
     public boolean getDataExists(Integer userId,Integer otherId) {
         AppDataAppointment appDataAppointment = appDataAppointmentDao.queryOnlyOneByUserIdAndOtherId(userId, otherId);
         if(appDataAppointment != null){

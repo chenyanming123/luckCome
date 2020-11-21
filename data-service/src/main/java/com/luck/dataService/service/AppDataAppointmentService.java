@@ -10,6 +10,8 @@ import java.util.Map;
 public interface AppDataAppointmentService {
     //发起约会
     Map addAppDataAppointment(AppDataAppointment appDataAppointment);
+    //同意邀约并约定唯一的时间、地点
+    Map updateAppDataAppointment(Integer id ,String appointmentTime,String placeId);
     //删除约会记录
     Map deleteAppDataAppointment(Integer id);
     //我喜欢的

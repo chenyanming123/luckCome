@@ -25,12 +25,39 @@ public class AppDataAppointmentController {
     public ResponseEntity<Map> addAppDataAppointment(@RequestBody AppDataAppointment appDataAppointment) {
         return ResponseEntity.ok(appDataAppointmentService.addAppDataAppointment(appDataAppointment));
     }
+
+    @ApiOperation(value = "同意邀约并约定唯一的时间、地点", notes = "", authorizations = {@Authorization(value = "token")})
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "successful")})
+    @RequestMapping(value = "/updateAppDataAppointment", method = RequestMethod.POST)
+    public ResponseEntity<Map> addAppDataAppointment(@RequestParam Integer id,
+                                                     @RequestParam String appointmentTime,
+                                                     @RequestParam String placeId) {
+        return ResponseEntity.ok(appDataAppointmentService.updateAppDataAppointment(id,appointmentTime,placeId));
+    }
+
+
     @ApiOperation(value = "删除约会记录", notes = "", authorizations = {@Authorization(value = "token")})
     @ApiResponses(value = {@ApiResponse(code = 200, message = "successful")})
     @RequestMapping(value = "/deleteAppDataAppointment", method = RequestMethod.POST)
     public ResponseEntity<Map> deleteAppDataAppointment(@RequestParam Integer id) {
         return ResponseEntity.ok(appDataAppointmentService.deleteAppDataAppointment(id));
     }
+
+
+    @ApiOperation(value = "不感兴趣", notes = "", authorizations = {@Authorization(value = "token")})
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "successful")})
+    @RequestMapping(value = "/loseInterest", method = RequestMethod.POST)
+    public ResponseEntity<Map> loseInterest(@RequestParam Integer id){
+        return ResponseEntity.ok(appDataAppointmentService.loseInterest(id));
+    }
+    @ApiOperation(value = "取消约会", notes = "", authorizations = {@Authorization(value = "token")})
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "successful")})
+    @RequestMapping(value = "/cancelAppointment", method = RequestMethod.POST)
+    public ResponseEntity<Map> cancelAppointment(@RequestParam Integer id){
+        return ResponseEntity.ok(appDataAppointmentService.cancelAppointment(id));
+    }
+
+    /*************************************/
     @ApiOperation(value = "我喜欢的", notes = "", authorizations = {@Authorization(value = "token")})
     @ApiResponses(value = {@ApiResponse(code = 200, message = "successful")})
     @RequestMapping(value = "/queryMylove", method = RequestMethod.POST)
@@ -62,19 +89,6 @@ public class AppDataAppointmentController {
                                                                    @RequestParam(required = true) Integer pageSize,
                                                                    @RequestParam Integer userId){
         return ResponseEntity.ok(appDataAppointmentService.refuseAppointment(pageNum,pageSize,userId));
-    }
-
-    @ApiOperation(value = "不感兴趣", notes = "", authorizations = {@Authorization(value = "token")})
-    @ApiResponses(value = {@ApiResponse(code = 200, message = "successful")})
-    @RequestMapping(value = "/loseInterest", method = RequestMethod.POST)
-    public ResponseEntity<Map> loseInterest(@RequestParam Integer id){
-        return ResponseEntity.ok(appDataAppointmentService.loseInterest(id));
-    }
-    @ApiOperation(value = "取消约会", notes = "", authorizations = {@Authorization(value = "token")})
-    @ApiResponses(value = {@ApiResponse(code = 200, message = "successful")})
-    @RequestMapping(value = "/cancelAppointment", method = RequestMethod.POST)
-    public ResponseEntity<Map> cancelAppointment(@RequestParam Integer id){
-        return ResponseEntity.ok(appDataAppointmentService.cancelAppointment(id));
     }
 
 }
