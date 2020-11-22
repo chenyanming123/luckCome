@@ -26,7 +26,7 @@ public class AppDataAppointmentController {
         return ResponseEntity.ok(appDataAppointmentService.addAppDataAppointment(appDataAppointment));
     }
 
-    @ApiOperation(value = "同意邀约并约定唯一的时间、地点", notes = "", authorizations = {@Authorization(value = "token")})
+    @ApiOperation(value = "同意邀约并约定唯一的时间、地点 ", notes = "", authorizations = {@Authorization(value = "token")})
     @ApiResponses(value = {@ApiResponse(code = 200, message = "successful")})
     @RequestMapping(value = "/updateAppDataAppointment", method = RequestMethod.POST)
     public ResponseEntity<Map> addAppDataAppointment(@RequestParam Integer id,
