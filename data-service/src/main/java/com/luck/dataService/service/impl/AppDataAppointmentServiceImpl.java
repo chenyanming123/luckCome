@@ -1,23 +1,29 @@
 package com.luck.dataService.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
+import com.luck.dataDao.AppBaseShopDao;
 import com.luck.dataDao.AppDataAppointmentDao;
+import com.luck.dataEntity.AppBaseShop;
 import com.luck.dataEntity.AppDataAppointment;
 import com.luck.dataService.service.AppDataAppointmentService;
+import com.luck.dataService.service.AppDataUserinfoService;
 import com.luck.dataService.utils.MassageUtils;
+import io.swagger.models.auth.In;
 import org.beetl.sql.core.engine.PageQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class AppDataAppointmentServiceImpl implements AppDataAppointmentService {
     //0：我喜欢或喜欢我，1：互相喜欢，2：取消，3：拒绝
     @Autowired
     AppDataAppointmentDao appDataAppointmentDao;
+    @Autowired
+    AppBaseShopDao appBaseShopDao;
+    @Autowired
+    AppDataUserinfoService appDataUserinfoService;
     @Override
     public Map addAppDataAppointment(AppDataAppointment appDataAppointment) {
         try {
@@ -40,8 +46,32 @@ public class AppDataAppointmentServiceImpl implements AppDataAppointmentService 
     }
 
     @Override
-    public Map updateAppDataAppointment(Integer id, String appointmentTime, String placeId) {
+    public Map queryAppDataAppointmentInfo(Integer id,Integer userId) {
+        Map map = new HashMap();
+        map = appDataAppointmentDao.getAppDataAppointment(id);
+        JSONObject placeJson = new JSONObject();
+        //获取约会的店铺信息
+        List<Map> appBaseShopList = new ArrayList<>();
+        if(map.get("placeId") != null && !"".equals(map.get("placeId"))){
+            String placeIds[] = map.get("placeId").toString().split(",");
+            for(int i=0;i<placeIds.length;i++){
+                Map appBaseShopMap = appBaseShopDao.getAppBaseShop(Integer.parseInt(placeIds[i]));
+                appBaseShopList.add(appBaseShopMap);
+            }
+            map.put("appBaseShopList",appBaseShopList);
+        }
+        JSONObject userInfoJson = new JSONObject();
+        if(map.get("userId") == userId){
+            userInfoJson = appDataUserinfoService.getUserInfo(Integer.parseInt(map.get("otherId").toString()),userId);
+        }else if(map.get("otherId") == userId){
+            userInfoJson = appDataUserinfoService.getUserInfo(Integer.parseInt(map.get("userId").toString()),userId);
+        }
+        map.put("userInfoJson",userInfoJson);
+        return map;
+    }
 
+    @Override
+    public Map updateAppDataAppointment(Integer id, String appointmentTime, String placeId) {
         AppDataAppointment appDataAppointment = appDataAppointmentDao.unique(id);
         appDataAppointment.setAppointmentTime(appointmentTime);
         appDataAppointment.setPlaceId(placeId);

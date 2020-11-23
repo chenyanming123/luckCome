@@ -34,10 +34,10 @@ public class StorageSyncServiceImpl implements StorageSyncService {
         String url = "";
         if(!code.isEmpty()){
             if(code.get("appType").equals("WX")){
-                param.put("appid", "wx14cc6d8a1ab36dc1");
-                param.put("secret", "e48059e7a14f1591fa656c10ea97193e");
-//                param.put("appid", "wx2ad0c11e3bd4a1a4");
-//                param.put("secret", "54a39f4ee7ed820833cd577ad90511d4");
+//                param.put("appid", "wx14cc6d8a1ab36dc1");
+//                param.put("secret", "e48059e7a14f1591fa656c10ea97193e");
+                param.put("appid", "wx2ad0c11e3bd4a1a4");
+                param.put("secret", "54a39f4ee7ed820833cd577ad90511d4");
                 param.put("js_code", code.get("code"));
                 param.put("grant_type", "authorization_code");
                 url = "https://api.weixin.qq.com/sns/jscode2session";

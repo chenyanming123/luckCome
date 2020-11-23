@@ -122,7 +122,7 @@ public class AppDataUserinfoServiceImpl implements AppDataUserinfoService {
         }
         //对方发起的
         AppDataAppointment appDataAppointment2 = appDataAppointmentDao.queryOnlyOneByUserIdAndOtherId(queryUserId,userId);
-        if (appDataAppointment != null) {
+        if (appDataAppointment2 != null) {
             if(appDataAppointment2.getStatus() == 0){
                 operationStatus = 3;
             }else if(appDataAppointment2.getStatus() == 1){

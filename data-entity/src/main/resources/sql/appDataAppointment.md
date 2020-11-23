@@ -134,3 +134,8 @@ queryOnlyOneByUserIdAndOtherId
     where  user_id = #userId# and other_id = #otherId# and  (status = 0 or status = 1) 
     order by register_time desc
     limit 1
+    
+getAppDataAppointment
+===
+* 获取约会记录的部分新
+    select id,user_id,other_id,place_id,appointment_time from app_data_appointment where  id = #id#

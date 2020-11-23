@@ -8,19 +8,19 @@ public class AppBaseShop {
     @ApiModelProperty(value = "", position = 1)
     private Integer id ;
     @ApiModelProperty(value = "商店名称", position = 2)
-    private Integer shopName;
+    private String shopName;
     @ApiModelProperty(value = "商店类型", position = 3)
-    private Integer shopType;
+    private String shopType;
     @ApiModelProperty(value = "商店电话", position = 4)
-    private Integer shop_phone;
+    private String shopPhone;
     @ApiModelProperty(value = "行政区", position = 5)
-    private Integer area_name;
+    private String areaName;
     @ApiModelProperty(value = "经度", position = 6)
-    private Date lon;
+    private String lon;
     @ApiModelProperty(value = "纬度", position = 7)
-    private Date lat;
+    private String lat;
     @ApiModelProperty(value = "商店地址", position = 8)
-    private Date shop_address;
+    private String shopAddress;
     @ApiModelProperty(value = "登记、更新时间", position = 9)
     private Date registerTime;
     @ApiModelProperty(value = "创建时间", position = 10)
@@ -34,60 +34,60 @@ public class AppBaseShop {
         this.id = id;
     }
 
-    public Integer getShopName() {
+    public String getShopName() {
         return shopName;
     }
 
-    public void setShopName(Integer shopName) {
+    public void setShopName(String shopName) {
         this.shopName = shopName;
     }
 
-    public Integer getShopType() {
+    public String getShopType() {
         return shopType;
     }
 
-    public void setShopType(Integer shopType) {
+    public void setShopType(String shopType) {
         this.shopType = shopType;
     }
 
-    public Integer getShop_phone() {
-        return shop_phone;
+    public String getShopPhone() {
+        return shopPhone;
     }
 
-    public void setShop_phone(Integer shop_phone) {
-        this.shop_phone = shop_phone;
+    public void setShopPhone(String shopPhone) {
+        this.shopPhone = shopPhone;
     }
 
-    public Integer getArea_name() {
-        return area_name;
+    public String getAreaName() {
+        return areaName;
     }
 
-    public void setArea_name(Integer area_name) {
-        this.area_name = area_name;
+    public void setAreaName(String areaName) {
+        this.areaName = areaName;
     }
 
-    public Date getLon() {
+    public String getLon() {
         return lon;
     }
 
-    public void setLon(Date lon) {
+    public void setLon(String lon) {
         this.lon = lon;
     }
 
-    public Date getLat() {
+    public String getLat() {
         return lat;
     }
 
-    public void setLat(Date lat) {
+    public void setLat(String lat) {
         this.lat = lat;
     }
 
-    public Date getShop_address() {
-        return shop_address;
+    public String getShopAddress() {
+        return shopAddress;
     }
 
-    public void setShop_address(Date shop_address) {
-        this.shop_address = shop_address;
+    public void setShopAddress(String shopAddress) {
+        this.shopAddress = shopAddress;
     }
 
     public Date getRegisterTime() {

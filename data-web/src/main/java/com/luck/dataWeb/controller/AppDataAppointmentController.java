@@ -26,10 +26,18 @@ public class AppDataAppointmentController {
         return ResponseEntity.ok(appDataAppointmentService.addAppDataAppointment(appDataAppointment));
     }
 
+    @ApiOperation(value = "查询约会详情,包含约定的时间地点", notes = "", authorizations = {@Authorization(value = "token")})
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "successful")})
+    @RequestMapping(value = "/queryAppDataAppointmentInfo", method = RequestMethod.POST)
+    public ResponseEntity<Map> queryAppDataAppointmentInfo(@RequestParam Integer id,
+                                                           @RequestParam Integer userId) {
+        return ResponseEntity.ok(appDataAppointmentService.queryAppDataAppointmentInfo(id,userId));
+    }
+
     @ApiOperation(value = "同意邀约并约定唯一的时间、地点 ", notes = "", authorizations = {@Authorization(value = "token")})
     @ApiResponses(value = {@ApiResponse(code = 200, message = "successful")})
     @RequestMapping(value = "/updateAppDataAppointment", method = RequestMethod.POST)
-    public ResponseEntity<Map> addAppDataAppointment(@RequestParam Integer id,
+    public ResponseEntity<Map> updateAppDataAppointment(@RequestParam Integer id,
                                                      @RequestParam String appointmentTime,
                                                      @RequestParam String placeId) {
         return ResponseEntity.ok(appDataAppointmentService.updateAppDataAppointment(id,appointmentTime,placeId));
