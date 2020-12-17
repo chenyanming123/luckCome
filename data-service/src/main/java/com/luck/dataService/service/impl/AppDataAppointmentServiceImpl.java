@@ -75,6 +75,7 @@ public class AppDataAppointmentServiceImpl implements AppDataAppointmentService 
         AppDataAppointment appDataAppointment = appDataAppointmentDao.unique(id);
         appDataAppointment.setAppointmentTime(appointmentTime);
         appDataAppointment.setPlaceId(placeId);
+        appDataAppointment.setStatus(1);
         if(appDataAppointment.getStatus() == 2 || appDataAppointment.getDataStatus() == 0){
             return MassageUtils.getMsg("500","操作失败，对方已取消约会！");
         }
