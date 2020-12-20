@@ -94,10 +94,12 @@ public class AppDataUserinfoServiceImpl implements AppDataUserinfoService {
         jsonObject.put("appDataImages",appDataImagesList);
         //返回数据操作状态
         if(userId != null && !"".equals(userId)){
-            Integer operationStatus = getOperationStatus(queryUserId,userId);
-            jsonObject.put("operationStatus",operationStatus);
+            Map map = getOperationStatus(queryUserId,userId);
+            jsonObject.put("operationStatus",map.get("operationStatus"));
+            jsonObject.put("appointmentId",map.get("appointmentId"));
         }else{
             jsonObject.put("operationStatus",null);
+            jsonObject.put("appointmentId",null);
         }
         return jsonObject;
     }
@@ -108,28 +110,32 @@ public class AppDataUserinfoServiceImpl implements AppDataUserinfoService {
     // 4.互相喜欢-我已付款(等待对方付款)
     // 5.互相喜欢-对方已付款(直接付款)
     // 6.双方付款-到订单页  (进行中)
-    public Integer getOperationStatus(Integer queryUserId,Integer userId){
-        Integer operationStatus = 1;
+    public Map getOperationStatus(Integer queryUserId,Integer userId){
+        Map map = new HashMap();
+        map.put("operationStatus",1);
+//        Integer operationStatus = 1;
         //我发起的
         //0：我喜欢或喜欢我，1：互相喜欢，2：取消，3：拒绝
         AppDataAppointment appDataAppointment = appDataAppointmentDao.queryOnlyOneByUserIdAndOtherId(userId,queryUserId);
         if (appDataAppointment != null) {
+            map.put("appointmentId",appDataAppointment.getId());
             if(appDataAppointment.getStatus() == 0){
-                operationStatus = 2;
+                map.put("operationStatus",2);
             }else if(appDataAppointment.getStatus() == 1){
-                operationStatus = 4;//待处理付款状态
+                map.put("operationStatus",4);//待处理付款状态
             }
         }
         //对方发起的
         AppDataAppointment appDataAppointment2 = appDataAppointmentDao.queryOnlyOneByUserIdAndOtherId(queryUserId,userId);
         if (appDataAppointment2 != null) {
+            map.put("appointmentId",appDataAppointment2.getId());
             if(appDataAppointment2.getStatus() == 0){
-                operationStatus = 3;
+                map.put("operationStatus",3);
             }else if(appDataAppointment2.getStatus() == 1){
-                operationStatus = 4;//待处理付款状态
+                map.put("operationStatus",4);//待处理付款状态
             }
         }
-        return operationStatus;
+        return map;
     }
 
     @Override

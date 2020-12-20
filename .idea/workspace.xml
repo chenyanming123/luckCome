@@ -21,8 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d5d0cd1e-7f7f-4b37-9bc8-714adbe8df53" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data-entity/target/classes/sql/appBaseShop.md" beforeDir="false" afterPath="$PROJECT_DIR$/data-entity/target/classes/sql/appBaseShop.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data-service/src/main/java/com/luck/dataService/service/impl/AppDataAppointmentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/data-service/src/main/java/com/luck/dataService/service/impl/AppDataAppointmentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-entity/src/main/resources/sql/appDataAppointment.md" beforeDir="false" afterPath="$PROJECT_DIR$/data-entity/src/main/resources/sql/appDataAppointment.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data-service/src/main/java/com/luck/dataService/service/impl/AppDataUserinfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/data-service/src/main/java/com/luck/dataService/service/impl/AppDataUserinfoServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +109,8 @@
       <workItem from="1606351262045" duration="1843000" />
       <workItem from="1606438269285" duration="2200000" />
       <workItem from="1606893737427" duration="1124000" />
-      <workItem from="1608195455024" duration="693000" />
+      <workItem from="1608195455024" duration="1740000" />
+      <workItem from="1608441894018" duration="1471000" />
     </task>
     <task id="LOCAL-00001" summary="商铺">
       <created>1605447898786</created>
@@ -188,7 +189,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606103135324</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="修改确认唯一地点后的状态">
+      <created>1608196404216</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1608196404216</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -218,7 +226,8 @@
     <MESSAGE value="333" />
     <MESSAGE value="修改为我 的wx id" />
     <MESSAGE value="发起约会和确定地址" />
-    <option name="LAST_COMMIT_MESSAGE" value="发起约会和确定地址" />
+    <MESSAGE value="修改确认唯一地点后的状态" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改确认唯一地点后的状态" />
   </component>
   <component name="WindowStateProjectService">
     <state x="427" y="280" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605770856672">
@@ -229,10 +238,10 @@
       <screen x="0" y="0" width="1500" height="960" />
     </state>
     <state x="556" y="164" key="#com.intellij.ide.util.MemberChooser/0.0.1500.960@0.0.1500.960" timestamp="1606100856657" />
-    <state x="250" y="54" key="CommitChangelistDialog2" timestamp="1606103134301">
+    <state x="250" y="54" key="CommitChangelistDialog2" timestamp="1608196402842">
       <screen x="0" y="0" width="1500" height="960" />
     </state>
-    <state x="250" y="54" key="CommitChangelistDialog2/0.0.1500.960@0.0.1500.960" timestamp="1606103134301" />
+    <state x="250" y="54" key="CommitChangelistDialog2/0.0.1500.960@0.0.1500.960" timestamp="1608196402842" />
     <state width="531" height="466" key="DebuggerActiveHint" timestamp="1606102919498">
       <screen x="0" y="0" width="1500" height="960" />
     </state>
@@ -297,10 +306,10 @@
       <screen x="0" y="0" width="1500" height="960" />
     </state>
     <state x="252" y="124" key="SettingsEditor/0.0.1500.960@0.0.1500.960" timestamp="1606095159466" />
-    <state x="343" y="213" key="Vcs.Push.Dialog.v2" timestamp="1606103140206">
+    <state x="343" y="213" key="Vcs.Push.Dialog.v2" timestamp="1608196413130">
       <screen x="0" y="0" width="1500" height="960" />
     </state>
-    <state x="343" y="213" key="Vcs.Push.Dialog.v2/0.0.1500.960@0.0.1500.960" timestamp="1606103140206" />
+    <state x="343" y="213" key="Vcs.Push.Dialog.v2/0.0.1500.960@0.0.1500.960" timestamp="1608196413130" />
     <state x="451" y="34" width="596" height="891" key="find.popup" timestamp="1605447219693">
       <screen x="0" y="0" width="1500" height="960" />
     </state>

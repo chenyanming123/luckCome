@@ -131,7 +131,7 @@ queryOnlyOneByUserIdAndOtherId
 ===
 * 根据发起人和对方查询最新的一条数据
     select * from app_data_appointment 
-    where  user_id = #userId# and other_id = #otherId# and  (status = 0 or status = 1) 
+    where  user_id = #userId# and other_id = #otherId# and  (status = 0 or status = 1) and data_status = 1
     order by register_time desc
     limit 1
     
