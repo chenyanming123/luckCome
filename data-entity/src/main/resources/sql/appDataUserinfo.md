@@ -26,6 +26,35 @@ getUserinfo
         and p1.user_id = #userId#
     @}
 
+getMyUserinfo
+===
+* 根据userId查询用户资料信息-我的资料含微信等重要信息
+
+    select 
+        p1.user_id,
+        p1.nick_name,
+        p1.wechat,
+        p1.sex,
+        p1.birth_year,
+        ROUND(DATEDIFF(CURDATE(), p1.birth_year)/365.2422) as age,
+        p1.address,
+        p1.domicile,
+        p1.education,
+        p4.education as education_name,
+        p1.stature,
+        p1.work,
+        p1.income,
+        p3.income as income_value,
+        p1.description,
+        p1.choose_require 
+    from app_data_userinfo p1
+    left join app_base_education p4 on p1.education = p4.id 
+    left join app_base_income p3 on p1.income = p3.id
+    where 1=1
+    @if(!isEmpty(userId) && userId != ''){
+        and p1.user_id = #userId#
+    @}
+
 getUserinfo2(暂时不用)
 ===
 * 根据userId查询用户资料信息

@@ -18,5 +18,6 @@ public interface AppDataUserinfoService {
     JSONObject getUserInfo(Integer queryUserId,Integer userId);
     //分页列表查看用户资料信息
     PageQuery<JSONObject> queryUserInfo(Integer pageNum,Integer pageSize,Integer userId,String address,Integer age_start,Integer age_end);
-
+    //获取我的用户资料(含上传的图片资料)
+    JSONObject getMyUserInfo(Integer userId);
 }

@@ -9,4 +9,7 @@ import java.util.Map;
 public interface AppDataUserinfoDao extends BaseMapper<AppDataUserinfo> {
     //根据userId查询用户资料信息
     Map getUserinfo(@Param("userId") Integer userId);
+    //根据userId查询我的用户资料信息
+    Map getMyUserinfo(@Param("userId") Integer userId);
+
 }

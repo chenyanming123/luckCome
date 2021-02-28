@@ -98,6 +98,17 @@ public class AppDataUserinfoServiceImpl implements AppDataUserinfoService {
         }
         return jsonObject;
     }
+    @Override
+    public JSONObject getMyUserInfo(Integer userId) {
+        JSONObject jsonObject = new JSONObject();
+        Map userinfoMap = appDataUserinfoDao.getMyUserinfo(userId);
+        jsonObject.put("appDataUserinfo",userinfoMap);
+        //查询用户上传的图片信息
+        List<JSONObject> appDataImagesList = appDataImagesDao.getImagesByUserId(userId);
+        jsonObject.put("appDataImages",appDataImagesList);
+        return jsonObject;
+    }
+
     //列表页查看详情时，返回数据操作状态
     // 1.相互不喜欢-发起约会，
     // 2.我喜欢的-取消邀约

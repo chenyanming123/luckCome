@@ -59,4 +59,11 @@ public class AppDataUserinfoController {
                                                                @RequestParam(required = false) Integer age_end) throws Exception {
         return ResponseEntity.ok(appDataUserinfoService.queryUserInfo(pageNum,pageSize,userId,address,age_start,age_end));
     }
+
+    @ApiOperation(value = "获取我的用户资料", notes = "",authorizations = {@Authorization(value = "token")})
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "successful")})
+    @RequestMapping(value = "/getMyUserInfo", method = RequestMethod.POST)
+    public ResponseEntity<JSONObject> getMyUserInfo(@RequestParam(required = true) Integer userId) {
+        return ResponseEntity.ok(appDataUserinfoService.getMyUserInfo(userId));
+    }
 }
