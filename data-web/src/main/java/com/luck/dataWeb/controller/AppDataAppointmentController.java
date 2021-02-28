@@ -38,9 +38,10 @@ public class AppDataAppointmentController {
     @ApiResponses(value = {@ApiResponse(code = 200, message = "successful")})
     @RequestMapping(value = "/updateAppDataAppointment", method = RequestMethod.POST)
     public ResponseEntity<Map> updateAppDataAppointment(@RequestParam Integer id,
-                                                     @RequestParam String appointmentTime,
-                                                     @RequestParam String placeId) {
-        return ResponseEntity.ok(appDataAppointmentService.updateAppDataAppointment(id,appointmentTime,placeId));
+                                                        @RequestParam String appointmentTime,
+                                                        @RequestParam String placeId,
+                                                        @RequestParam Integer userId) {
+        return ResponseEntity.ok(appDataAppointmentService.updateAppDataAppointment(userId,id,appointmentTime,placeId));
     }
 
 

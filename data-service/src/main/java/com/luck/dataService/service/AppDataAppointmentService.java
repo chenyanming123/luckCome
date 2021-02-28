@@ -13,7 +13,7 @@ public interface AppDataAppointmentService {
     //查询约会详情,包含约定的时间地点
     Map queryAppDataAppointmentInfo(Integer id,Integer userId);
     //同意邀约并约定唯一的时间、地点
-    Map updateAppDataAppointment(Integer id ,String appointmentTime,String placeId);
+    Map updateAppDataAppointment(Integer userId,Integer id ,String appointmentTime,String placeId);
     //删除约会记录
     Map deleteAppDataAppointment(Integer id);
     //我喜欢的

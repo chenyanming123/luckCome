@@ -93,7 +93,8 @@ queryLoveEachOther
             p3.education AS education_name,
             p2.WORK,
             p5.image_name,
-            p1.STATUS 
+            p1.STATUS,
+            IF(p6.id is null,'未支付','支付完成') as payStatus
     	@}
     FROM
     	(
@@ -126,12 +127,13 @@ queryLoveEachOther
             WHERE
             s.user_id_num = 1 
     	) p5 ON p1.newUserId = p5.user_id
+    	LEFT JOIN app_data_pay p6 on p1.id = p6.appointment_id and  p6.user_id = #userId#
     	
 queryOnlyOneByUserIdAndOtherId
 ===
 * 根据发起人和对方查询最新的一条数据
     select * from app_data_appointment 
-    where  user_id = #userId# and other_id = #otherId# and  (status = 0 or status = 1) 
+    where  user_id = #userId# and other_id = #otherId# and  (status = 0 or status = 1) and data_status = 1
     order by register_time desc
     limit 1
     

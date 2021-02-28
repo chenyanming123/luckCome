@@ -118,7 +118,7 @@ public class AppDataUserinfoServiceImpl implements AppDataUserinfoService {
         //0：我喜欢或喜欢我，1：互相喜欢，2：取消，3：拒绝
         AppDataAppointment appDataAppointment = appDataAppointmentDao.queryOnlyOneByUserIdAndOtherId(userId,queryUserId);
         if (appDataAppointment != null) {
-            map.put("appointmentId",appDataAppointment.getId());
+            map.put("appointmentId",appDataAppointment.getId());//返回约会id
             if(appDataAppointment.getStatus() == 0){
                 map.put("operationStatus",2);
             }else if(appDataAppointment.getStatus() == 1){
@@ -128,7 +128,7 @@ public class AppDataUserinfoServiceImpl implements AppDataUserinfoService {
         //对方发起的
         AppDataAppointment appDataAppointment2 = appDataAppointmentDao.queryOnlyOneByUserIdAndOtherId(queryUserId,userId);
         if (appDataAppointment2 != null) {
-            map.put("appointmentId",appDataAppointment2.getId());
+            map.put("appointmentId",appDataAppointment2.getId());//返回约会id
             if(appDataAppointment2.getStatus() == 0){
                 map.put("operationStatus",3);
             }else if(appDataAppointment2.getStatus() == 1){

@@ -5,13 +5,16 @@ import com.luck.dataDao.AppBaseShopDao;
 import com.luck.dataDao.AppDataAppointmentDao;
 import com.luck.dataEntity.AppBaseShop;
 import com.luck.dataEntity.AppDataAppointment;
+import com.luck.dataEntity.AppDataPay;
 import com.luck.dataService.service.AppDataAppointmentService;
+import com.luck.dataService.service.AppDataPayService;
 import com.luck.dataService.service.AppDataUserinfoService;
 import com.luck.dataService.utils.MassageUtils;
 import io.swagger.models.auth.In;
 import org.beetl.sql.core.engine.PageQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
@@ -22,6 +25,8 @@ public class AppDataAppointmentServiceImpl implements AppDataAppointmentService 
     AppDataAppointmentDao appDataAppointmentDao;
     @Autowired
     AppBaseShopDao appBaseShopDao;
+    @Autowired
+    AppDataPayService appDataPayService;
     @Autowired
     AppDataUserinfoService appDataUserinfoService;
     @Override
@@ -69,9 +74,10 @@ public class AppDataAppointmentServiceImpl implements AppDataAppointmentService 
         map.put("userInfoJson",userInfoJson);
         return map;
     }
-
+    //同意邀约并约定唯一的时间、地点
+    @Transactional
     @Override
-    public Map updateAppDataAppointment(Integer id, String appointmentTime, String placeId) {
+    public Map updateAppDataAppointment(Integer userId,Integer id, String appointmentTime, String placeId) {
         AppDataAppointment appDataAppointment = appDataAppointmentDao.unique(id);
         appDataAppointment.setAppointmentTime(appointmentTime);
         appDataAppointment.setPlaceId(placeId);
@@ -80,6 +86,13 @@ public class AppDataAppointmentServiceImpl implements AppDataAppointmentService 
             return MassageUtils.getMsg("500","操作失败，对方已取消约会！");
         }
         appDataAppointmentDao.updateById(appDataAppointment);
+        //添加支付
+        AppDataPay appDataPay = new AppDataPay();
+        appDataPay.setAppointmentId(id);
+        appDataPay.setUserId(userId);
+        appDataPay.setPayMoney(50);
+        appDataPay.setPayTime(new Date());
+        appDataPayService.addPayInfo(appDataPay);
         return MassageUtils.getMsg("200","操作成功！");
     }
 

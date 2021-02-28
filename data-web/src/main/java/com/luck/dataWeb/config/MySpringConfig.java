@@ -15,6 +15,7 @@ public class MySpringConfig extends WebMvcConfigurerAdapter {
         registry.addInterceptor(loginAppConfig)
                 .excludePathPatterns("/error","/login/login","/login/register","/login/httpTest","/storageSync/getCode2Session")
                 .excludePathPatterns("/appDataUserinfo/queryUserInfo","/appDataUserinfo/getUserInfo")
+//                .excludePathPatterns("/AppDataPay/addPayInfo")//支付测试
                 .excludePathPatterns("/swagger-resources/**", "/webjars/**", "/v2/**", "/swagger-ui.html/**");
         super.addInterceptors(registry);
     }

@@ -99,5 +99,4 @@ public class AppDataImagesServiceImpl implements AppDataImagesService {
         }
         return null;
     }
-
 }
