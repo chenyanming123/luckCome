@@ -6,5 +6,5 @@ import java.util.Map;
 
 public interface AppDataPayService {
     //添加用户支付信息
-    Integer addPayInfo(AppDataPay appDataPay);
+    Map addPayInfo(Integer appointmentId,Integer userId,Integer payMoney);
 }

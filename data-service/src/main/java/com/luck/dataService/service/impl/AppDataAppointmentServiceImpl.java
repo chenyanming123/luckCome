@@ -87,12 +87,7 @@ public class AppDataAppointmentServiceImpl implements AppDataAppointmentService 
         }
         appDataAppointmentDao.updateById(appDataAppointment);
         //添加支付
-        AppDataPay appDataPay = new AppDataPay();
-        appDataPay.setAppointmentId(id);
-        appDataPay.setUserId(userId);
-        appDataPay.setPayMoney(50);
-        appDataPay.setPayTime(new Date());
-        appDataPayService.addPayInfo(appDataPay);
+        appDataPayService.addPayInfo(id,userId,50);
         return MassageUtils.getMsg("200","操作成功！");
     }
 
