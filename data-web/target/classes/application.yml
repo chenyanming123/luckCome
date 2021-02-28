@@ -15,7 +15,7 @@ server:
 spring:
   datasource:
     name: luck_come
-    url: jdbc:mysql://39.106.159.116:3306/luck_come?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false
+    url: jdbc:mysql://39.106.159.116:3306/luck_come?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&serverTimezone=Asia/Shanghai
 #    Asia/Shanghai
 #    url: jdbc:mysql://localhost:3306/luck_come?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
     #    url: jdbc:mysql://127.0.0.1:3306/demo
@@ -51,11 +51,11 @@ spring:
         max-idle: 8     #连接池中的最大空闲连接
         min-idle: 1     #连接池中的最小空闲连接
         max-wait: 3000  #连接池最大阻塞等待毫秒时间（使用负值-1表示没有限制）
-    jackson:            #关闭json转换的时候空的bean会报异常
-      time-zone: GMT+8
-      serialization:
-        FAIL_ON_EMPTY_BEANS: false
-        WRITE_DATES_AS_TIMESTAMPS: true #timestamp对象在序列化时为int
+  jackson:            #关闭json转换的时候空的bean会报异常
+#    time-zone: GMT+8
+    serialization:
+      FAIL_ON_EMPTY_BEANS: false
+      WRITE_DATES_AS_TIMESTAMPS: true #timestamp对象在序列化时为int
 #      date-format: yyyy-MM-dd HH:mm:ss
 #      time-zone: GMT+8
 #      default-property-inclusion: non_empty
