@@ -94,7 +94,7 @@ queryLoveEachOther
             p2.WORK,
             p5.image_name,
             p1.STATUS,
-            IF(p6.id is null,'未支付','支付完成') as payStatus
+            IF(p6.id is null,0,1) as payStatus
     	@}
     FROM
     	(

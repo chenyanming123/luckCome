@@ -1,19 +1,12 @@
 package com.luck.dataService.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import com.luck.dataDao.AppDataAppointmentDao;
-import com.luck.dataDao.AppDataImagesDao;
-import com.luck.dataDao.AppDataUserinfoDao;
-import com.luck.dataDao.AppUserDao;
-import com.luck.dataEntity.AppDataAppointment;
-import com.luck.dataEntity.AppDataUserinfo;
-import com.luck.dataEntity.AppDataUserinfoUtil;
-import com.luck.dataEntity.AppUser;
+import com.luck.dataDao.*;
+import com.luck.dataEntity.*;
 import com.luck.dataService.common.AreaName;
 import com.luck.dataService.service.AppDataImagesService;
 import com.luck.dataService.service.AppDataUserinfoService;
 import com.luck.dataService.utils.MassageUtils;
-import io.swagger.annotations.ApiModelProperty;
 import org.beetl.sql.core.engine.PageQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,6 +29,8 @@ public class AppDataUserinfoServiceImpl implements AppDataUserinfoService {
     AppUserDao appUserDao;
     @Autowired
     AppDataImagesService appDataImagesService;
+    @Autowired
+    AppDataPayDao appDataPayDao;
 
     @Override
     @Transactional
@@ -122,7 +117,8 @@ public class AppDataUserinfoServiceImpl implements AppDataUserinfoService {
             if(appDataAppointment.getStatus() == 0){
                 map.put("operationStatus",2);
             }else if(appDataAppointment.getStatus() == 1){
-                map.put("operationStatus",4);//待处理付款状态
+                //查询付款状态
+                map.put("operationStatus",getPayStatus(appDataAppointment.getId(),queryUserId,userId));
             }
         }
         //对方发起的
@@ -132,10 +128,28 @@ public class AppDataUserinfoServiceImpl implements AppDataUserinfoService {
             if(appDataAppointment2.getStatus() == 0){
                 map.put("operationStatus",3);
             }else if(appDataAppointment2.getStatus() == 1){
-                map.put("operationStatus",4);//待处理付款状态
+                //查询付款状态
+                map.put("operationStatus",getPayStatus(appDataAppointment2.getId(),queryUserId,userId));
             }
         }
         return map;
+    }
+    // 4.互相喜欢-我已付款(等待对方付款)
+    // 5.互相喜欢-对方已付款(直接付款)
+    // 6.双方付款-到订单页  (进行中)
+    //获取付款状态
+    public Integer getPayStatus(Integer appDataAppointmentId,Integer queryUserId,Integer userId){
+        Integer operationStatus;
+        AppDataPay appDataPayMe = appDataPayDao.createLambdaQuery().andEq(AppDataPay::getAppointmentId,appDataAppointmentId).andEq(AppDataPay::getUserId,userId).single();
+        AppDataPay appDataPayOther = appDataPayDao.createLambdaQuery().andEq(AppDataPay::getAppointmentId,appDataAppointmentId).andEq(AppDataPay::getUserId,queryUserId).single();
+        if (appDataPayMe != null && appDataPayOther != null){
+            operationStatus = 6;//双方已付款
+        }else if(appDataPayMe != null && appDataPayOther == null){
+            operationStatus = 4;;//我已付款(等待对方付款)
+        }else{
+            operationStatus = 5;//对方已付款(直接付款)
+        }
+        return operationStatus;
     }
 
     @Override
